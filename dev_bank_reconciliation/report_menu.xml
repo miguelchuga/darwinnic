@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	<!--
+		<report
+            id="action_bank_reconcilation_report"
+            string="Bank Reconcilation"
+            model="bank.reconciliation"
+            report_type="qweb-pdf"
+            name="dev_bank_reconciliation.report_bank_reconcile"
+            file="dev_bank_reconciliation.report_bank_reconcile"
+            header="False"
+        />
+       
+        <record id="bank_reconcile_conf_report" model="report.paperformat">
+	        <field name="name">cork sale paper A4</field>
+	        <field name="default" eval="True" />
+	        <field name="format">custom</field>
+	        <field name="page_height">220</field>
+	        <field name="page_width">210</field>
+	        <field name="orientation">Portrait</field>
+	        <field name="margin_top">45</field>
+	        <field name="margin_bottom">25</field>
+	        <field name="margin_left">7</field>
+	        <field name="margin_right">7</field>
+	        <field name="header_line" eval="False" />
+	        <field name="header_spacing">40</field>
+	        <field name="dpi">90</field>
+        </record>
+
+        <record id="dev_bank_reconciliation.action_bank_reconcilation_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="dev_bank_reconciliation.bank_reconcile_conf_report" />
+        </record>        
+        
+		--> 
+        <template id="external_layout_reconciliation_report">
+            <!-- Multicompany -->
+            <t t-call="dev_bank_reconciliation.external_layout_recon_header" />
+            <t t-raw="0" />
+<!--            <t t-call="dev_bank_reconciliation.external_layout_recon_footer" />-->
+        </template>
+        
+        <template id="external_layout_recon_header">
+		    <div class="header" style="font-size:11px;text-transform:uppercase;">
+		        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="margin-left:-55px;height:70px;width=2000px"/><br/><br/>
+		        <b>
+		            <span t-esc="company.name"/>
+		            <t t-if="company.company_registry">
+		                <span t-esc="company.company_registry" style="font-size:8px"/>
+		            </t>
+		            <br/>
+		            <span t-esc="company.street"/>, <span t-esc="company.street2"/>, <span t-esc="company.zip"/> <span t-esc="company.city"/>, <span t-esc="company.state_id.name"/>, <span t-esc="company.country_id.name"/>.
+		            <br/>
+		            <t t-if="company.phone">
+		                TEL. : <span t-esc="company.phone"/>
+		            </t>
+		            <t t-if="company.fax">
+		               &#160; &#160; FAX : <span t-esc="company.fax"/>
+		            </t>
+		            
+		            &#160; &#160; EMAIL : <span t-esc="company.email"/> &#160; &#160; WEBSITE : <span t-esc="company.website"/>  
+		            <br/>
+		            <span style="font-size:11px">GST Reg. No. : <span t-esc="company.vat"/></span>
+		        </b>
+		    </div>
+		</template>
+
+    </data>
+</openerp>

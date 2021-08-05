@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bonification_product_template_form" model="ir.ui.view">
+            <field name="name">bonification.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="priority" eval="9"/>
+    	    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div>
+                        <field name="has_bonus"/>
+                        <label for="has_bonus"/>
+                    </div>
+                </xpath>
+
+                <xpath expr="//page[@name='inventory']" position="before">
+                    <page name="bonus" string="Bonus products" attrs="{'invisible': [('has_bonus', '=', False)]}">
+                        <group colspan="4">
+                            <field name="price_for_bonus"/>
+                        </group>
+                        <group colspan="4">
+                            <field name="bonus_product_ids" required="1" nolabel="1" widget="one2many_list">
+                                <tree string="Bonus products" editable="bottom">
+                                    <field name="product_id" required="1"/>
+                                    <field name="minimum_qty" required="1"/>
+                                    <field name="maximum_qty" required="1"/>
+                                    <field name="bonus_qty" required="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group colspan="4">
+                            <field name="bonus_product_tipo_ids" required="1" nolabel="1" widget="one2many_list">
+                                <tree string="Bonus por tipo" editable="bottom">
+                                    <field name="product_id" required="1"/>
+                                    <field name="x_tipo_id" required="1"/>
+                                </tree>
+                            </field>
+                        </group>                        
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_employee_form_gt" model="ir.ui.view">
+            <field name="name">view.employee.form_gt</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+			<field name="arch" type="xml">
+	            <xpath expr="//page[@name='personal_information']" position="before">
+	                <page string="MINITRAB Guatemala">
+	                    <group col="4">
+	                        <separator string="Configuración Ministerio de Trabajo Guatemala" colspan="4"/>
+
+		       	            <field name="codigo_interno"/>
+		       	            <field name="nit"/>
+	            	        <field name="igss"/>
+	       	        	    <field name="nombre1"/>
+	           	        	<field name="nombre2"/>
+		           	        <field name="apellido1"/>
+	                	    <field name="apellido2"/>
+	                	    <field name="apellido_casada"/>
+	                	    <field name="conyuge"/>
+	                	    <field name="puesto_minitrab_id"/>
+	                	    <field name="identificacion_minitrab_id"/>
+	                	    <field name="dpi"/> 
+	                	    <field name="dpi_extendido"/> 
+	                	    <field name="irtra"/>
+	                	    <field name="lugar_nacimiento_minitrab_id"/>
+	                	    <field name="pais_origen_minitrab_id"/>
+	                	    <field name="nivel_academico_minitrab_id"/>
+	                	    <field name="profesion_minitrab_id"/>
+	                	    <field name="etnia_minitrab_id"/>
+	                	    <field name="idioma_minitrab_id"/>
+	                	    <field name="forma_pago_id"/>
+	                	    <field name="cuenta_bancaria"/>
+	                	    <field name="tipo_contrato"/>
+	                	    <field name="inicio_labores"/>
+	                	    <field name="reinicio_labores"/>
+	                	    <field name="fecha_retiro"/>
+	                	    <field name="jornada"/>
+							<field name="jornada_minitrab_id"/>
+	                	    <field name="dias_laborados_ano"/>
+	                	    <field name="permisos_trabajo"/>
+	                	    <field name="salario_anual_nominal"/>
+	                	    <field name="bonificacion_decreto"/>
+	                	    <field name="extras_anuales"/>
+	                	    <field name="aguinaldo"/>
+	                	    <field name="bono14"/>
+	                	    <field name="redistribucion_por_comision"/>
+	                	    <field name="viaticos"/>
+	                	    <field name="bonificaciones"/>
+	                	    <field name="redistribucion_vacaciones"/>
+	                	    <field name="redistribucion_indemnizacion"/>
+	                        <field name="ex_empleado"/>
+							<field name="tipo_discapacidad_minitrab_id"/>
+							<field name="trabajo_en_el_extranjero_minitrab"/>
+							<field name="ocupacion_extranjero_minitrab_id"/>
+							<field name="motivo_finalizacion_relacion_le"/>
+							<field name="tipo_sangre_id"/>
+
+	                    </group>
+	                </page>
+	
+	            </xpath>
+			</field>
+        </record>
+    </data>
+</odoo>

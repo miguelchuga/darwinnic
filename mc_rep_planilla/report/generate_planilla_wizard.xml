@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="generate_planilla_wizard" model="ir.ui.view">
+            <field name="name">Genera Planilla a Hoja Electrónica</field>
+            <field name="model">rep_planilla.generate_planilla</field>
+            <field name="arch" type="xml">
+                <form string="Generate file">
+                    <field invisible="1" name="state"/>
+                    <field name="name" invisible="1"/>
+                    
+                    <group states="choose" string="Selección de planilla para el reporte">
+                        <!--
+                        <field name="planillas_id" required="1" widget="selection" options="{'no_create': True}"/>
+                       	-->
+                        <field name="planillas_id" required="1" options="{'no_create': True}"/>
+                    </group>
+
+                    <group states="choose" string="">
+                        <field name="categoria_employee_id" required="0" widget="selection" options="{'no_create': True}"/>
+                    </group>
+                    
+                    <group states="choose" string="">
+	                	<group string="Marque si desea agrupar por Tipo de Planilla">
+	                        <field name="por_tipo_planilla" required="1"/>
+	                	</group>	                		                    
+                	</group>
+                	                                  
+                    <div states="get">
+                        <h2>Generacion completa</h2>
+                        <p>Click aquí para abrir : <field name="data" readonly="1" filename="name"/></p>
+                    </div>
+                    
+                    <footer states="choose">
+                        <button name="generate_file" string="Generate file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                    <footer states="get">
+                        <button special="cancel" string="Close" type="object"/>
+                    </footer>
+ 
+                </form>
+            </field>
+        </record>
+
+        <record id="generate_planilla_action" model="ir.actions.act_window">
+            <field name="name">Genera planilla a Hoja Electrónica</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rep_planilla.generate_planilla</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Reporte de planilla"
+            action="generate_planilla_action"
+            id="generate_planilla_menu"
+            parent="hr_payroll.menu_hr_payroll_configuration"
+            sequence="100"
+        />
+
+    </data>
+</odoo>

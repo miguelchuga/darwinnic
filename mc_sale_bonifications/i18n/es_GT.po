@@ -1,0 +1,149 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_bonifications
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-18 03:45+0000\n"
+"PO-Revision-Date: 2017-10-17 21:49-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_GT\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_product_bonus_product_ids
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_template_bonus_product_ids
+msgid "Bonification products"
+msgstr "Productos bonificables"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_sale_order_line_bonus
+msgid "Bonus product"
+msgstr "Bonificación"
+
+#. module: sale_bonifications
+#: model:ir.ui.view,arch_db:sale_bonifications.bonification_product_template_form
+msgid "Bonus products"
+msgstr "Productos bonificados"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_bonus_qty
+msgid "Bonus quantity"
+msgstr "Cantidad bonificada"
+
+#. module: sale_bonifications
+#: code:addons/sale_bonifications/models/product_bonification.py:31
+#, python-format
+msgid "Bonus quantity must by greater than zero"
+msgstr "Cantidad bonificada debe ser mayor a cero"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_product_has_bonus
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_template_has_bonus
+msgid "Has bonus"
+msgstr "Bonificable"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_id
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_sale_order_line_maximum_bonus_qty
+msgid "Maximum bonus quantity"
+msgstr "Cantidad máxima a bonificar"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_maximum_qty
+msgid "Maximum quantity"
+msgstr "Cantidad máxima"
+
+#. module: sale_bonifications
+#: code:addons/sale_bonifications/models/product_bonification.py:25
+#, python-format
+msgid "Maximum quantity must by greater than minimum quantity"
+msgstr "Cantidad máxima debe ser mayor que cantidad mínima"
+
+#. module: sale_bonifications
+#: code:addons/sale_bonifications/models/product_bonification.py:23
+#, python-format
+msgid "Maximum quantity must by greater than zero"
+msgstr "Cantidad máxima debe ser mayor que cero"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_minimum_qty
+msgid "Minimum quantity"
+msgstr "Cantidad mínima"
+
+#. module: sale_bonifications
+#: code:addons/sale_bonifications/models/product_bonification.py:17
+#, python-format
+msgid "Minimum quantity must by greater than zero"
+msgstr "Cantidad mínima debe ser mayor que cero"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_sale_order_line_origin_line_id
+msgid "Origin bonus line"
+msgstr "Linea origen de bonificación"
+
+#. module: sale_bonifications
+#: model:ir.model.fields,field_description:sale_bonifications.field_product_bonification_product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: sale_bonifications
+#: model:ir.model,name:sale_bonifications.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: sale_bonifications
+#: model:ir.model,name:sale_bonifications.model_product_bonification
+msgid "Product bonification ranges"
+msgstr "Rangos de bonificación"
+
+#. module: sale_bonifications
+#: model:ir.model,name:sale_bonifications.model_sale_order
+msgid "Sales Order"
+msgstr "Aviso para pedido de venta"
+
+#. module: sale_bonifications
+#: model:ir.model,name:sale_bonifications.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"

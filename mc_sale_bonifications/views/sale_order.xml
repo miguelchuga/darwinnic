@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="bonification_view_order_form" model="ir.ui.view">
+            <field name="name">bonification.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="9"/>
+    	    <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<header>
+                	<button name="add_bonus_products" string="Calcular bonificaciones" type="object" ></button>
+              	</header>
+
+                <xpath expr="//field[@name='order_line']/tree" position="inside">
+                    <field name="bonus" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="colors">green:bonus==True</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

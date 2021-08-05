@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<template id="mc_nomina_gt.report_recibos">
+		    <t t-call="report.html_container">
+		        <t t-foreach="docs" t-as="o">
+	                <div class="page" style="font-size: 10px; line-height: 1.0">
+	                    <table class="cr-table">
+							<tbody class="cr-tbody" style="height:100%">
+			                    <br/>
+			                    <strong>
+				                    <p t-field="o.company_id.name" style="text-align: center; line-height: 1.0"/>
+				               	</strong>
+				                <center><strong>*** RECIBO   DE   PAGO ***</strong></center>
+				                <strong>
+				                	<p t-field="o.payslip_run_id.name" style="text-align: center; line-height: 1.0"/>
+				                </strong>
+			                    <table class="table table-condensed table-bordered" style="font-size: 10px; line-height: 1.0">
+			                        <tr style="font-size: 10px; line-height: 1.0">
+			                            <td><strong>Nombre</strong></td>
+			                            <td><span t-field="o.employee_id"/></td>
+			                            <td><strong>Departamento</strong></td>
+			                            <td><span t-field="o.employee_id.department_id.name"/></td>
+			                            <td><strong>Nit</strong></td>
+			                            <td><span t-field="o.employee_id.nit"/></td>
+			                            <td><strong>Del</strong></td>
+			                            <td><span t-field="o.date_from"/></td>
+			                            <td><strong>Al</strong></td>
+			                            <td><span t-field="o.date_to"/></td>
+			                        </tr>
+			                        <tr style="font-size: 10px; line-height: 1.0">
+			                            <td><strong>Email</strong></td>
+			                            <td><span t-field="o.employee_id.work_email"/></td>
+			                            <td><strong>DPI</strong></td>
+			                            <td><span t-field="o.employee_id.identification_id"/></td>
+			                        </tr>
+			                    </table>
+			                    <table class="table table-condensed" style="font-size: 10px; line-height: 1.0">
+			                        <p t-foreach="o.get_payslip_titulo()" t-as="t">
+			                            <td><span t-field="t.name"/>
+			                                <span t-esc="str('{0:10,.2f}'.format(t.total))"/>
+			                            </td>
+			                        </p>
+			                    </table>
+
+				                <div class="detalle">
+
+				                    <table class="table table-condensed table-bordered" style="font-size: 10px; line-height: 1.0">
+
+				                   		<td style="font-size: 10px; line-height: 1.0">
+				                       		<center><strong>I N G R E S O S</strong></center>
+				                       		<table class="table table-condensed" style="font-size: 10px; line-height: 1.0">
+				                        		<thead>
+				                            		<tr>
+				                                		<th>CONCEPTO</th>
+				                                		<th>VALOR</th>
+				                            		</tr>
+				                        		</thead>
+					                        	<tbody>
+					                            	<tr t-foreach="o.get_payslip_ingresos()" t-as="i">
+														<td style="font-size: 10px; line-height: 1.0"><span t-field="i.name"/></td>
+					                                	<td align="right" style="font-size: 10px; line-height: 1.0" ><span t-esc="str('{0:10,.2f}'.format(i.total))"/></td>
+					                            	</tr>
+					                        	</tbody>
+					                       </table>
+					                 	</td>
+				                       	<td style="font-size: 10px; line-height: 1.0">
+					                       	<center><strong>E G R E S O S</strong></center>
+					                       	<table class="table table-condensed" style="font-size: 10px; line-height: 1.0">
+					                        	<thead>
+					                            	<tr>
+					                                	<th>CONCEPTO</th>
+					                                	<th>VALOR</th>
+					                            	</tr>
+					                        	</thead>
+					                        <tbody>
+					                            <tr t-foreach="o.get_payslip_egresos()" t-as="e">
+					                                <td style="font-size: 10px; line-height: 1.0"><span t-field="e.name"/></td>
+					                                <td align="right" style="font-size: 10px; line-height: 1.0"><span t-esc="str('{0:10,.2f}'.format(e.total))"/></td>
+					                            </tr>
+					                        </tbody>
+					                       </table>
+				                      	</td>
+
+				                    </table>
+
+		                    	</div>
+
+			                    <div class="footer" style="position:absolute; top:430px; width:100%">
+
+				                    <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+				                       <td style="font-size: 10px; line-height: 1.0">
+				                        <p t-foreach="o.get_payslip_pie()" t-as="p">
+				                            <td style="font-size: 10px; line-height: 1.0"><span t-field="p.name"/>
+				                                <span t-esc="str('{0:10,.2f}'.format(p.total))"/>
+				                            </td>
+				                        </p>
+				                      </td>
+				                       <td style="font-size: 10px; line-height: 1.0">
+				                          <p class="text-right"><strong>Firma ______________________________</strong></p>
+				                      </td>
+				                    </table>
+
+				               	</div>
+
+		                    </tbody>
+						</table>
+	                </div>
+		        </t>
+		    </t>
+		</template>
+
+		<!-- RECIBOS CARTA -->
+		<template id="mc_nomina_gt.report_recibos_carta">
+		    <t t-call="report.html_container">
+		        <t t-foreach="docs" t-as="o">
+		                <div class="page" style="font-size: 10px; line-height: 1.0">
+		                    <br/>
+		                    <strong>
+		                    	<p t-field="o.company_id.name" style="text-align: center; line-height: 1.0"/>
+		                    </strong>
+		                    <center><strong>*** RECIBO   DE   PAGO ***</strong></center>
+		                    <strong>
+		                    <p t-field="o.payslip_run_id.name" style="text-align: center; line-height: 1.0"/>
+		                    </strong>
+		                    <table class="table table-condensed table-bordered" style="font-size: 9px; line-height: 1.0">
+		                        <tr style="font-size: 9px; line-height: 1.0">
+		                            <td><strong>Nombre</strong></td>
+		                            <td><span t-field="o.employee_id"/></td>
+		                            <td><strong>Departamento</strong></td>
+		                            <td><span t-field="o.employee_id.department_id.name"/></td>
+		                            <td><strong>DPI</strong></td>
+		                            <td><span t-field="o.employee_id.identification_id"/></td>
+		                            <td><strong>Nit</strong></td>
+		                            <td><span t-field="o.employee_id.nit"/></td>
+		                            <td><strong>Del</strong></td>
+		                            <td><span t-field="o.date_from"/></td>
+		                            <td><strong>Al</strong></td>
+		                            <td><span t-field="o.date_to"/></td>
+		                        </tr>
+		                    </table>
+		                    <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+		                        <p t-foreach="o.get_payslip_titulo()" t-as="t">
+		                            <td style="font-size: 9px; line-height: 1.0"><span t-field="t.name"/>
+		                                <span t-esc="str('{0:10,.2f}'.format(t.total))"/>
+		                            </td>
+		                        </p>
+		                    </table>
+		                    <table class="table table-condensed table-bordered" style="font-size: 9px; line-height: 1.0">
+		                    	<td style="font-size: 9px; line-height: 1.0">
+			                       	<center><strong>I N G R E S O S</strong></center>
+			                       	<table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+				                        <thead>
+				                            <tr style="font-size: 9px; line-height: 1.0">
+				                                <th>CONCEPTO</th>
+				                                <th>VALOR</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody >
+				                            <tr t-foreach="o.get_payslip_ingresos()" t-as="i" style="font-size: 9px; line-height: 1.0">
+				                                <td style="font-size: 9px; line-height: 1.0"><span t-field="i.name"/></td>
+				                                <td align="right" style="font-size: 9px; line-height: 1.0"><span align="right" t-esc="str('{0:10,.2f}'.format(i.total))"/></td>
+				                            </tr>
+				                        </tbody>
+			                       	</table>
+		                       	</td>
+		                       	<td style="font-size: 9px; line-height: 1.0">
+			                       	<center><strong>E G R E S O S</strong></center>
+			                      	<table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+				                        <thead>
+				                            <tr style="font-size: 9px; line-height: 1.0">
+				                                <th>CONCEPTO</th>
+				                                <th>VALOR</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                            <tr t-foreach="o.get_payslip_egresos()" t-as="e" style="font-size: 9px; line-height: 1.0">
+				                                <td style="font-size: 9px; line-height: 1.0"><span t-field="e.name"/></td>
+				                                <td align="right" style="font-size: 9px; line-height: 1.0"><span t-esc="str('{0:10,.2f}'.format(e.total))"/></td>
+				                            </tr>
+				                        </tbody>
+			                       	</table>
+		                      	</td>
+		                    </table>
+		                    <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+		                       <td>
+		                        <p t-foreach="o.get_payslip_pie()" t-as="p">
+		                            <td style="font-size: 9px; line-height: 1.0"><span t-field="p.name"/>
+		                                <span t-esc="str('{0:10,.2f}'.format(p.total))"/>
+		                            </td>
+		                        </p>
+		                      </td>
+		                      <td style="font-size: 9px; line-height: 1.0">
+		                          <p class="text-right"><strong>Firma ______________________________</strong></p>
+		                      </td>
+		                    </table>
+		                    <strong>
+		                    	<p t-field="o.company_id.name" style="text-align: center"/>
+		                    </strong>
+		                    <strong>
+		                    	<p t-field="o.company_id.vat" style="text-align: center"/>
+		                    </strong>
+		                    <center><strong>*** RECIBO   DE   PAGO ***</strong></center>
+		                    <strong>
+		                    	<p t-field="o.payslip_run_id.name" style="text-align: center; line-height: 1.0"/>
+		                    </strong>
+		                    <table class="table table-condensed table-bordered" style="font-size: 9px; line-height: 1.0">
+		                        <tr style="font-size: 9px; line-height: 1.0">
+		                            <td><strong>Nombre</strong></td>
+		                            <td><span t-field="o.employee_id"/></td>
+		                            <td><strong>Departamento</strong></td>
+		                            <td><span t-field="o.employee_id.department_id.name"/></td>
+		                            <td><strong>DPI</strong></td>
+		                            <td><span t-field="o.employee_id.identification_id"/></td>
+		                            <td><strong>Nit</strong></td>
+		                            <td><span t-field="o.employee_id.nit"/></td>
+		                        </tr>
+		                    </table>
+		                    <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+		                        <p t-foreach="o.get_payslip_titulo()" t-as="t">
+		                            <td style="font-size: 9px; line-height: 1.0"><span t-field="t.name"/>
+		                                <span t-esc="str('{0:10,.2f}'.format(t.total))"/>
+		                            </td>
+		                        </p>
+		                    </table>
+		                    <table class="table table-condensed table-bordered" style="font-size: 9px; line-height: 1.0">
+		                       <td style="font-size: 9px; line-height: 1.0">
+			                       <center><strong>I N G R E S O S</strong></center>
+			                       <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+			                       <thead>
+			                            <tr style="font-size: 9px; line-height: 1.0">
+			                                <th>CONCEPTO</th>
+			                                <th>VALOR</th>
+			                            </tr>
+			                       </thead>
+			                       <tbody >
+			                           <tr t-foreach="o.get_payslip_ingresos()" t-as="i" style="font-size: 9px; line-height: 1.0">
+			                               <td style="font-size: 9px; line-height: 1.0"><span t-field="i.name"/></td>
+			                               <td align="right" style="font-size: 9px; line-height: 1.0"><span t-esc="str('{0:10,.2f}'.format(i.total))"/></td>
+			                           </tr>
+			                        </tbody>
+			                       </table>
+		                       </td>
+		                       <td style="font-size: 9px; line-height: 1.0">
+			                       <center><strong>E G R E S O S</strong></center>
+			                       <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+			                        <thead>
+			                            <tr style="font-size: 9px; line-height: 1.0">
+			                                <th>CONCEPTO</th>
+			                                <th>VALOR</th>
+			                            </tr>
+			                        </thead>
+			                        <tbody>
+			                            <tr t-foreach="o.get_payslip_egresos()" t-as="e" style="font-size: 9px; line-height: 1.0">
+			                                <td style="font-size: 9px; line-height: 1.0"><span t-field="e.name"/></td>
+			                                <td align="right" style="font-size: 9px; line-height: 1.0"><span t-esc="str('{0:10,.2f}'.format(e.total))"/></td>
+			                            </tr>
+			                        </tbody>
+			                       </table>
+		                      </td>
+		                    </table>
+		                    <table class="table table-condensed" style="font-size: 9px; line-height: 1.0">
+		                       	<td style="font-size: 9px; line-height: 1.0">
+		                        	<p t-foreach="o.get_payslip_pie()" t-as="p">
+		                            	<td style="font-size: 9px; line-height: 1.0"><span t-field="p.name"/>
+		                                	<span t-esc="str('{0:10,.2f}'.format(p.total))"/>
+		                            	</td>
+		                        	</p>
+		                      	</td>
+		                       	<td style="font-size: 9px; line-height: 1.0">
+		                          	<p class="text-right"><strong>Firma ______________________________</strong></p>
+		                      	</td>
+		                    </table>
+		                </div>
+		        </t>
+		    </t>
+
+		</template>
+
+	</data>
+
+</odoo>

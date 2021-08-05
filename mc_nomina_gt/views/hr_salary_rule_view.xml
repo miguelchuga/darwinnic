@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--
+        <record id="view_hr_salary_rule_form_gt" model="ir.ui.view">
+            <field name="name">view.hr.salary.rule.form.gt</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+			<field name="arch" type="xml">
+
+            <xpath expr="//page[@name='rules']" position="before">
+
+                <page string="MINITRAB">
+                    <group col="4">
+                        <separator string="Configuración Ministerio de Trabajo" colspan="4"/>
+	       	            <field name="titulo_detalle"/>
+	       	            <field name="pie_detalle"/>
+	       	            <field name="imprime_recibo"/>
+	       	            <field name="ingreso_egreso"/>
+                    </group>
+                    <group col="4">
+                        <separator string="Configuración de Reporte Planillas" colspan="4"/>
+	       	            <field name="imprime_reporte"/>
+	       	            <field name="orden_columna"/>
+	       	            <field name="titulos_columnas"/>
+                    </group>  
+                    <group col="4">
+                        <separator string="Reporte de Cheques y Depósitos" colspan="4"/>
+	       	            <field name="imprime_liquido"/>
+                    </group>
+                    <group col="4">
+                        <separator string="Configuración de Libro de Salarios" colspan="4"/>
+	       	            <field name="imprime_reporte_ls"/>
+	       	            <field name="orden_columna_ls"/>
+	       	            <field name="suma_regla"/>
+	       	            <field name="titulos_columnas_ls"/>
+                    </group>    
+                </page>
+
+            </xpath>
+
+			</field>
+        </record>
+-->
+    </data>
+
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_edxfel_form" model="ir.ui.view">
+            <field name="name">edxfel.edxfel.form</field>
+            <field name="model">feledx.settings</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Configuracion EDX">
+                    <field name="company_id" string='Empresa'/>
+                    <field name="ws_url_document"  string='Url'/>
+                    <field name="ws_timeout"  string='Timeout'/>
+                    <field name="sign_area"  string='Area'/>
+                    <field name="sign_Password"  string='Password'/>
+                    <field name="sign_connector"  string='Connector'/>
+                    <field name="sign_convertdocument"  string='Convert document'/>
+                    <field name="sign_signdocument"  string='Sign Signdocument'/>
+                    <field name="sign_printdocument"  string='Print document' />
+
+                    <field name="vat_affiliation"  string='Afilliado al IVA' />
+                    <field name="isr_scenery"  string='Afiliación al ISR' />
+                    <field name="isr_phrases"  string='ISR phrases' />
+                    <field name="excempt_scenery"  string='Escenarios Excempt' />
+
+                    <field name="descripcion_resolucion"  string='Descripcion resolución' />
+                    <field name="numero_resolucion"  string='Número resolución' />
+                    <field name="fecha_resolucion"  string='Fecha resolución' />
+
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_edxfel_tree" model="ir.ui.view">
+            <field name="name">edxfel.edxfel.tree</field>
+            <field name="model">feledx.settings</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="EDX Configuración">
+
+                    <field name="company_id" string='Empresa'/>
+                    <field name="ws_url_document"  string='Url'/>
+                    <field name="ws_timeout"  string='Timeout'/>
+                    <field name="sign_area"  string='Area'/>
+ <!--
+                    <field name="sign_Password"  string='Password'/>
+                    <field name="sign_connector"  string='Connector'/>
+                    <field name="sign_convertdocument"  string='Convert document'/>
+                    <field name="sign_signdocument"  string='Sign Signdocument'/>
+                    <field name="sign_printdocument"  string='Print document' />
+-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_edxfel" model="ir.actions.act_window">
+            <field name="name">Configuración EDX FEL</field>
+            <field name="res_model">feledx.settings</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_edxfel_tree"/>
+		</record>
+
+        <menuitem action="action_edxfel" id="menu_edxfel_edxfel" parent="account.menu_finance_configuration"/>
+
+    </data>
+</openerp>

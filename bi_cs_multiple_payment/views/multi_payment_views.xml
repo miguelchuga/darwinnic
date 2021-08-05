@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <act_window id="cs_multi_payment_view"
+            name="Pagos Multiples"
+            res_model="customer.multi.payments"
+            binding_model="account.move"
+            binding_type="action"
+            view_mode="form" target="new" />
+
+        		<record id="view_account_payment_account_form_inherited" model="ir.ui.view">
+            <field name="name">account.payment.account.form.inherited</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="account_id" widget="selection" attrs="{'invisible': [('payment_type', 'not in', ('inbound', 'outbound'))]}"/> 
+                    <field name="comentario"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_type']" position="before">
+                    <field name="pdf" readonly="1" filename="pdf_name"/>
+                    <field name="pdf_name" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+    
+    </data>
+</odoo>

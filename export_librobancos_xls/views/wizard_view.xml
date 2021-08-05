@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='wizard_librobancos_form'>
+            <field name="name">wizard.librobancos.form</field>
+            <field name="model">wizard.librobancos</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    
+                    <group string="Indique Cuenta Bancaria">
+                        <field name="account_id" options="{'no_create': True}" required="1"/>
+                        <field name="state" required="1"/>
+                    </group>
+                        
+                    <group string="Ingrese Rango de Fecha">            
+                        <field name="date_from" required="1"/>
+                        <field name="date_to" required="1"/>
+                    </group>
+                    
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1"
+                                string="Exporta Libro de Bancos a MS Excel" class="oe_highlight"
+                                context="{'xls_export':1}" icon="fa-download"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record model='ir.actions.act_window' id='wizard_librobancos_act'>
+            <field name="name">Exporta Libro de Bancos a MS Excel</field>
+            <field name="res_model">wizard.librobancos</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_librobancos_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <report
+            id="librobancos_report_xls"
+            model="report.export_librobancos_xls.librobancos_report_xls.xlsx"
+            string="Report Xlsx"
+            report_type="xlsx"
+            name="export_librobancos_xls.librobancos_report_xls.xlsx"
+            file="export_librobancos_xls.librobancos_report_xls.xlsx"
+            attachment_use="False"
+        />
+        <menuitem name="Libro de Bancos XLS" parent="account.menu_finance_reports" id="export_excel" action="wizard_librobancos_act" sequence="5"/>
+    </data>
+</odoo>

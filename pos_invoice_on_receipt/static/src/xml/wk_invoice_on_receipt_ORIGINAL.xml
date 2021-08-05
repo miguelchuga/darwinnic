@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<templates id="template" xml:space="preserve">
+
+
+    <t t-extend="OrderReceipt">
+        <t t-jquery=".pos-receipt-contact" t-operation="append">
+            <t t-if="order.to_invoice">
+                <div>Documento: <t t-esc='receipt.invoice_id' /></div>
+                <div style="text-align:center;"> <t t-esc="receipt.infilefel_comercial_name"/></div>
+                <div style="text-align:center;"> <t t-esc="receipt.nombre_empresa"/></div>
+                <div style="text-align:center;"> <t t-esc="receipt._infilefel_establishment_street"/></div>
+                <div style="text-align:center;"><label>NIT: </label> <t t-esc="receipt.nit_empresa"/></div>
+   		        <br />
+
+                <div style="text-align:center;"><label>DOCUMENTO TRIBUTARIO ELECTRÓNICO </label></div>
+                <div style="text-align:center;"><label>FACTURA  ELECTRÓNICA</label></div>
+   		        <br />
+
+                <div style="text-align:center;"><label>Numero: </label><t t-esc="receipt.infile_number"/></div>
+                <div style="text-align:center;"><label>Serie: </label><t t-esc="receipt.serie_venta"/></div>
+                <div style="text-align:center;"><label>Autorización: </label><t t-esc="receipt.infilefel_sat_uuid"/></div>
+                <div style="text-align:center;"><label>Fecha certificación: </label><t t-esc="receipt.infilefel_sign_date"/></div>
+                <br />
+
+
+            </t>
+        </t>
+    </t>
+
+</templates>
+
+

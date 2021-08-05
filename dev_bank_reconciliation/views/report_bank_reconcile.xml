@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="report_bank_reconcile">
+		    <t t-foreach="docs" t-as="o">
+			    <t t-call="dev_bank_reconciliation.external_layout_reconciliation_report">
+			        <t t-set="data_report_margin_top" t-value="12"/>
+			        <t t-set="data_report_header_spacing" t-value="9"/>
+			        <t t-set="data_report_dpi" t-value="110"/>
+			        <div class="page">			
+		                
+		                <div class="text-center" style="font-size:12px">
+		                    <strong>Bank Reconcilation Statement </strong><br/>
+		                    <strong>AS At </strong><span t-field="o.end_date" /><br/>
+		                    <strong>Bank Code </strong> <span t-field="o.journal_id.code"/><br/>
+		                    <strong>Bank Description </strong> <span t-field="o.journal_id.name"/><br/>
+						</div>
+		                
+		                <table style="width:100%;" class='text-right'>
+		                    <tr>
+		                        <td style="width:85%"></td>
+		                        <td style="width:15%;border-bottom:1px solid #ccc"><b>Amount</b></td>
+		                    </tr>
+		                    <tr>
+		                    	<td style="width:70%" class='text-right'><b>Balance As Per Bank Statement(<span t-field="company.currency_id.name"/>)</b></td>
+		                        <!--
+		                        <td style="width:70%" class='text-right'><b>Saldo Final Estado de Cuenta Bancario(<span t-field="company.currency_id.name"/>)</b></td>
+		                        -->
+		                        <td style="width:30%">
+		                                <span t-field="o.start_balance"/>  <span t-field="company.currency_id.symbol"/>
+		                        </td>
+		                    </tr>
+		                </table>
+		                
+		                <div class="row mt8 mb8"/>
+			                <table style="width:100%;font-size:12px">
+			                    <tr style="font-weight:bold;border-bottom:1px solid #000">
+			                        <td style="width:15%">Date</td>
+			                        <td style="width:20%">Ref</td>
+			                        <td style="width:35%">Description</td>
+			                        <td class="text-right" style="width:15%">Debit</td>
+			                        <td class="text-right" style="width:15%">Credit</td>
+			                    </tr>
+			                    <tr>
+			                        <t>
+			                            <td colspan="5" style="color:#FFF"><br/></td>
+			                        </t>
+			                    </tr>
+			                    <tr>
+			                        <t t-if="get_reconsile_entry(o)">
+			                        	
+			                            <td colspan="5"><b>Add : Deposits Not Credited By Bank</b></td>
+			                            <!--
+			                            <td colspan="5"><b>(+) : Depósitos y Créditos no operados</b></td>
+			                            -->
+			                        </t>
+			                    </tr>
+			                    <tr>
+			                        <t>
+			                            <td colspan="5" style="color:#FFF"><br/></td>
+			                        </t>
+			                    </tr>
+			            
+			                    <tr t-foreach="get_reconsile_entry(o)" t-as="l" >
+			                        <td style="width:15%"> <span t-esc="l['date']"/></td>
+			                        <td style="width:20%"> <span t-esc="l['ref']"/></td>
+			                        <td style="width:35%"> <span t-esc="l['name']"/></td>
+			                        <td class="text-right" style="width:15%"> 
+			                            <span t-esc="l['debit'] or 0.00"/> <span t-field="company.currency_id.symbol"/> 
+			                        </td>
+			                        <td class="text-right" style="width:15%"> 
+			                            <span t-esc="l['credit'] or 0.00" /> <span t-field="company.currency_id.symbol"/>
+			                        </td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <t t-if="get_reconsile_entry(o)">
+			                            <td colspan="3"></td>
+			                            <td class="text-right" style="border-top:1px solid #ccc"> <b><span t-esc="get_total_debit_reconcile(o)"/>  <span t-field="company.currency_id.symbol"/></b></td>
+			                            <td class="text-right" style="border-top:1px solid #ccc"> <b><span t-esc="get_total_credit_reconcile(o)"/>  <span t-field="company.currency_id.symbol"/></b></td>
+			                        </t>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <t t-if="get_unreconsile_entry(o)">			                        	
+			                            <td colspan="5"><b>Less : Unpresented Amount</b></td>
+			                           	<!--
+			                            <td colspan="5"><b>(-) : Cheques y notas de débito en circulación</b></td>
+			                            -->	                            
+			                            <td></td>
+			                        </t>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <t>
+			                            <td colspan="5" style="color:#FFF"><br/></td>
+			                        </t>
+			                    </tr>
+			                    
+			                    <tr t-foreach="get_unreconsile_entry(o)" t-as="l" >
+			                        <td style="width:15%"> <span t-esc="l['date']"/></td>
+			                        <td style="width:20%"> <span t-esc="l['ref']"/></td>
+			                        <td style="width:35%"> <span t-esc="l['name']"/></td>
+			                        <td class="text-right" style="width:15%"> <span t-esc="l['debit'] or 0.00"/> <span t-field="company.currency_id.symbol"/></td>
+			                        <td class="text-right" style="width:15%"> <span t-esc="l['credit'] or 0.00" /><span t-field="company.currency_id.symbol"/></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <t t-if="get_unreconsile_entry(o)">
+			                            <td colspan="3" ></td>
+			                            <td class="text-right" style="border-top:1px solid #ccc"> <b><span t-esc="get_total_debit_unreconcile(o)"/><span t-field="company.currency_id.symbol"/></b></td>
+			                            <td class="text-right" style="border-top:1px solid #ccc"> <b><span t-esc="get_total_credit_unreconcile(o)"/><span t-field="company.currency_id.symbol"/></b></td>
+			                        </t>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <t>
+			                            <td colspan="5" style="color:#FFF"><br/></td>
+			                        </t>
+			                    </tr>
+			<!--                    <tr style="line-height:30px">-->
+			<!--                        <td colspan="3" ></td>-->
+			<!--                        <td class="text-right" style="border-top:1px solid #000"> <b>Balance As Per Cash Book)</b></td>-->
+			<!--                        <td class="text-right" style="border-top:1px solid #000"> <b><span t-field="o.end_balance"/>  <span t-field="company.currency_id.symbol"/></b></td>-->
+			<!--                    </tr>-->
+			                    
+			                </table>
+			                
+			                <table style="width:100%;" class='text-right'>			                    
+			                    <tr>
+			                    	<td style="width:85%"  class='text-right'><b>Balance As Per Cuenta Cash Book(<span t-field="company.currency_id.name"/>)</b></td>
+			                    	<!--
+			                        <td style="width:85%"  class='text-right'><b>Saldo esperado en contabilidad(<span t-field="company.currency_id.name"/>)</b></td>
+			                     	-->
+			                        <td style="width:15%;border-top:1px solid #ccc">
+			                        	<span t-field="o.end_balance"/><span t-field="company.currency_id.symbol"/>
+			                        </td>
+			                    </tr>
+			                </table>
+			                
+		        		</div> 
+			        
+				        <div class="footer">
+				            <table width="100%" style="font-size:12px;page-break-inside: avoid;">
+				                <tr>
+				                    <td width="25%"><strong>PREPARED BY :</strong></td>
+				                    <td width="33%"><strong>CHECKED BY :</strong></td>
+				                    <td width="37%"><strong>APPROVED BY :</strong></td>	                    
+				                </tr>
+				                <tr>
+				                    <td width="33%">
+				                        <br/><br/><br/><br/>
+				                        <span t-field="user.name" /> <br/>
+				                        _____________________________
+				                    </td>
+				                    <td width="37%">
+				                        <br/><br/><br/><br/>
+				                        _____________________________<br/>
+				                    
+				                    </td>
+				                    <td width="25%">
+				                        <br/><br/><br/><br/>
+				                        ____________________________________<br/>
+				                    </td>
+				                </tr>
+				            </table>    
+				    </div>
+			    </t>
+		    </t>
+		</template>
+		
+		<template id="report_bank_reconcile_doc">
+		    <t t-call="bank_reconcile_report.html_container">
+		        <t t-foreach="doc_ids" t-as="doc_id">
+		            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'dev_bank_reconciliation.report_bank_reconcile')"/>
+		        </t>
+		    </t>
+		</template>
+		
+	</data>
+</openerp>

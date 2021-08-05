@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	
+	<data>
+
+		<!-- puesto_minitrab -->		
+        <record id="view_puesto_minitrab_form" model="ir.ui.view">
+            <field name="name">puesto_minitrab.form</field>
+            <field name="model">puesto_minitrab</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">          
+				<form string="puesto_minitrab">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+                </form>
+            </field>
+        </record>
+      
+        <record id="view_fast_puesto_minitrab_tree" model="ir.ui.view">
+            <field name="name">puesto_minitrab.tree</field>
+            <field name="model">puesto_minitrab</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="puesto_minitrab">
+                    <field name="code" string="Código"/>
+                    <field name="name" string="Nombre" select="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_puesto_minitrab_form" model="ir.actions.act_window">
+            <field name="name">Puestos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">puesto_minitrab</field>
+			<field name="view_mode">form</field>
+        </record>
+        
+        <menuitem action="action_puesto_minitrab_form" id="menu_puesto_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="10"/>
+
+		<!-- lugar_nacimiento_minitrab -->		
+        <record id="view_lugar_nacimiento_minitrab_form" model="ir.ui.view">
+            <field name="name">lugar_nacimiento_minitrab.form</field>
+            <field name="model">lugar_nacimiento_minitrab</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">          
+				<form string="Lugar de Nacimiento">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+                </form>
+            </field>
+        </record>
+      
+        <record id="view_fast_lugar_nacimiento_minitrab_tree" model="ir.ui.view">
+            <field name="name">lugar_nacimiento_minitrab.tree</field>
+            <field name="model">lugar_nacimiento_minitrab</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Lugar de Nacimiento">
+                    <field name="code" string="Código"/>
+                    <field name="name" string="Nombre" select="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_lugar_nacimiento_minitrab_form" model="ir.actions.act_window">
+            <field name="name">Lugar de Nacimiento</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lugar_nacimiento_minitrab</field>
+            <field name="view_mode">form</field>
+        </record>
+        
+        <menuitem action="action_lugar_nacimiento_minitrab_form" id="menu_lugar_nacimiento_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="11"/>
+
+		<!-- pais_origen_minitrab -->		
+        <record id="view_pais_origen_minitrab_form" model="ir.ui.view">
+            <field name="name">pais_origen_minitrab.form</field>
+            <field name="model">pais_origen_minitrab</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">          
+				<form string="País de Origen">
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+                </form>
+            </field>
+        </record>
+      
+        <record id="view_fast_pais_origen_minitrab_tree" model="ir.ui.view">
+            <field name="name">pais_origen_minitrab.tree</field>
+            <field name="model">pais_origen_minitrab</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Pais de Origen">
+                    <field name="code" string="Código"/>
+                    <field name="name" string="Nombre" select="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_pais_origen_minitrab_form" model="ir.actions.act_window">
+            <field name="name">País de Origen</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pais_origen_minitrab</field>
+			<field name="view_mode">form</field>
+        </record>
+        
+        <menuitem action="action_pais_origen_minitrab_form" id="menu_pais_origen_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="12"/>
+
+		<!-- nivel_academico_minitrab -->		
+		<record id="view_nivel_academico_minitrab_form" model="ir.ui.view">
+			<field name="name">nivel_academico_minitrab.form</field>
+			<field name="model">nivel_academico_minitrab</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="Nivel Académico">
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_nivel_academico_minitrab_tree" model="ir.ui.view">
+			<field name="name">nivel_academico_minitrab.tree</field>
+			<field name="model">nivel_academico_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Nivel Académico">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_nivel_academico_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Nivel Académico</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">nivel_academico_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_nivel_academico_minitrab_form" id="menu_nivel_academico_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="13"/>
+
+		<!-- etnia_minitrab -->		
+		<record id="view_etnia_minitrab_form" model="ir.ui.view">
+			<field name="name">etnia_minitrab.form</field>
+			<field name="model">etnia_minitrab</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="Etnia">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_etnia_minitrab_tree" model="ir.ui.view">
+			<field name="name">etnia_minitrab.tree</field>
+			<field name="model">etnia_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Etnia">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_etnia_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Etnia</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">etnia_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_etnia_minitrab_form" id="menu_etnia_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="14"/>
+
+		<!-- idioma_minitrab -->		
+		<record id="view_idioma_minitrab_form" model="ir.ui.view">
+			<field name="name">idioma_minitrab.form</field>
+			<field name="model">idioma_minitrab</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="Idioma Minitrab">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_idioma_minitrab_tree" model="ir.ui.view">
+			<field name="name">idioma_minitrab.tree</field>
+			<field name="model">idioma_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Idioma Minitrab">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_idioma_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Idioma Minitrab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">idioma_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_idioma_minitrab_form" id="menu_idioma_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="15"/>
+
+		<!-- forma_pago -->		
+		<record id="view_forma_pago_form" model="ir.ui.view">
+			<field name="name">forma_pago.form</field>
+			<field name="model">forma_pago</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="forma_pago">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_forma_pago_tree" model="ir.ui.view">
+			<field name="name">forma_pago.tree</field>
+			<field name="model">forma_pago</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="forma_pago">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_forma_pago_form" model="ir.actions.act_window">
+			<field name="name">Forma de Pago</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">forma_pago</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_forma_pago_form" id="menu_forma_pago_form" parent="hr.menu_human_resources_configuration" sequence="16"/>
+ 
+		<!-- identificacion_minitrab -->		
+		<record id="view_identificacion_minitrab_form" model="ir.ui.view">
+			<field name="name">identificacion_minitrab.form</field>
+			<field name="model">identificacion_minitrab</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="Tipo Identifación">
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_identificacion_minitrab_tree" model="ir.ui.view">
+			<field name="name">identificacion_minitrab.tree</field>
+			<field name="model">identificacion_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Tipo Identificación">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_identificacion_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Tipo Identificación</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">identificacion_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_identificacion_minitrab_form" id="menu_identificacion_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="17"/>
+ 
+		<!-- profesion_minitrab -->		
+		<record id="view_profesion_minitrab_form" model="ir.ui.view">
+			<field name="name">profesion_minitrab.form</field>
+			<field name="model">profesion_minitrab</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">          
+				<form string="Profesión">					
+					<group col="4">                      
+						<field name="code" string="Código"/>
+						<field name="name" string="Nombre" select="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	  
+		<record id="view_fast_profesion_minitrab_tree" model="ir.ui.view">
+			<field name="name">profesion_minitrab.tree</field>
+			<field name="model">profesion_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Profesión">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="action_profesion_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Profesión</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">profesion_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+		
+		<menuitem action="action_profesion_minitrab_form" id="menu_profesion_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="18"/>
+
+		<record id="view_jornada_minitrab_tree" model="ir.ui.view">
+			<field name="name">jornada_minitrab.tree</field>
+			<field name="model">jornada_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Jornada">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_jornada_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Jornada Minitrab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">jornada_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem action="action_jornada_minitrab_form" id="menu_jornada_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="19"/>
+
+		<record id="view_tipo_contrato_minitrab_tree" model="ir.ui.view">
+			<field name="name">tipo_contrato_minitrab.tree</field>
+			<field name="model">tipo_contrato_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Tipo Contrato Minitrab">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_tipo_contrato_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Tipo de Contrato Minitrab</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">tipo_contrato_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem action="action_tipo_contrato_minitrab_form" id="menu_tipo_contrato_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="20"/>
+
+		<record id="view_tipo_discapacidad_minitrab_tree" model="ir.ui.view">
+			<field name="name">tipo_discapacidad_minitrab.tree</field>
+			<field name="model">tipo_discapacidad_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Tipo Discapacidad">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_tipo_discapacidad_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Tipo de Discapacidad</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">tipo_discapacidad_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem action="action_tipo_discapacidad_minitrab_form" id="menu_tipo_discapacidad_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="21"/>
+
+		<record id="view_temporalidad_contrato_minitab_tree" model="ir.ui.view">
+			<field name="name">temporalidad_contrato_minitrab.tree</field>
+			<field name="model">temporalidad_contrato_minitrab</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Temporalidad del Contrato">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_temporalidad_contrato_minitrab_form" model="ir.actions.act_window">
+			<field name="name">Temporalidad del Contrato</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">temporalidad_contrato_minitrab</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem action="action_temporalidad_contrato_minitrab_form" id="menu_temporalidad_contrato_minitrab_form" parent="hr.menu_human_resources_configuration" sequence="22"/>
+
+		<record id="view_tipo_sangre_tree" model="ir.ui.view">
+			<field name="name">tipo_sangre.tree</field>
+			<field name="model">tipo_sangre</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Tipo Sangre">
+					<field name="code" string="Código"/>
+					<field name="name" string="Nombre" select="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_tipo_sangre_form" model="ir.actions.act_window">
+			<field name="name">Tipo Sangre</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">tipo_sangre</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem action="action_tipo_sangre_form" id="menu_tipo_sangre_form" parent="hr.menu_human_resources_configuration" sequence="23"/>
+
+    </data>
+    
+</odoo>

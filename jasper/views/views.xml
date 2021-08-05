@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="jasper.form">
+      <field name="name">jasper_server.list</field>
+      <field name="model">jasper.server</field>
+      <field name="arch" type="xml">
+        <form>
+          <group string="Datos reporte">
+                  <field name="reporte"/>
+                  <field name="consulta"/>
+                  <field name="parametros"/>
+          </group>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record id="jasper_server_tree_view" model="ir.ui.view">
+        <field name="name">jasper_server.tree</field>
+        <field name="model">jasper.server</field>
+        <field name="arch" type="xml">
+            <tree string="Discount Authority">
+              <field name="reporte"/>
+              <field name="consulta"/>
+              <field name="parametros"/>
+            </tree>
+        </field>
+    </record>
+    <record id='action_jasper_server_view' model='ir.actions.act_window'>
+        <field name='name'>Jasper Server</field>
+        <field name='res_model'>jasper.server</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+    <menuitem parent="base.menu_users" id="menu_jasper_server"
+              action="action_jasper_server_view" sequence="22"
+              groups="base.group_no_one"/>
+  </data>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+<!--base.group_sale_manager_show_product_cost_price -->
+    <record id="base.group_neo_credit_limit" model="res.groups">
+        <field name="name">Autoriza creditos</field>
+    </record>
+
+</data>
+</odoo>

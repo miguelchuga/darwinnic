@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<record id="x_reglas_dias_view" model="ir.ui.view">
+		<field name="name">x.reglas.dias.view</field>
+		<field name="model">x_reglas_dias</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Distribución de Mano de Obra">
+				<field name="x_contract_id"/>
+				<field name="x_rule_id"/>
+				<field name="name"/>
+				<field name="x_dias"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_x_reglas_dias_form" model="ir.actions.act_window">
+		<field name="name">Distribución de Mano de Obra</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">x_reglas_dias</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="x_reglas_dias_view"/>
+	</record>
+	<!--
+	<menuitem id="menu_x_reglas_dias_form" action="action_x_reglas_dias_form" parent="hr_payroll.menu_department_tree" sequence="30"/>
+	-->
+</odoo>

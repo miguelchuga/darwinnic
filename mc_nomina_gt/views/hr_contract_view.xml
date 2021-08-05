@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_contrac_form_gt" model="ir.ui.view">
+            <field name="name">view.contract.form.gt</field>
+            <field name="model">hr.contract</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+			<field name="arch" type="xml">
+<!--
+                <field name="journal_id" position="after">
+                    <field name="tipo_contrato_minitrab_id"/>
+                    <field name="temporalidad_contrato_minitrab_id"/>
+                    <field name="diario_cheques_id"/>
+                </field>
+-->
+                <xpath expr="/form[1]/sheet[1]/notebook[1]/page[2]" position="after">
+                    <page name= "Guatemala_contrato" string="Ingresos">
+                        <group col="4">
+                            <separator string="INGRESOS" colspan="4"/>
+                            <field name="primera_quincena"/>
+                            <field name="segunda_quincena"/>
+                            <field name="dias_laborados"/>
+                            <field name="dias_laborados2"/>
+                            <field name="horas_extras"/>
+                            <field name="horas_extras2"/>
+                            <field name="otra_bonificacion"/>
+                            <field name="comisiones"/>
+                            <field name="ingresos1"/>
+                            <field name="ingresos2"/>
+                            <field name="ingresos3"/>
+                            <field name="ingresos4"/>
+                            <field name="ingresos5"/>
+                        </group>
+                        <group col="4">
+                            <separator string="Días Faltados" colspan="4"/>
+                            <field name="dias_igss"/>
+                            <field name="dias_falta"/>
+                        </group>
+                        <group>
+                            <separator string="REGLAS/DIAS" colspan="4"/>
+
+                            <field name="x_reglas_dias_ids" nolabel="1" >
+                                <tree string="Reglas/Dias" editable="bottom" >
+                                    <field name="x_rule_id"/>
+                                    <field name="x_dias"/>
+                                </tree>
+                            </field>
+
+                        </group>
+
+                    </page>
+                </xpath>
+                <xpath expr="/form[1]/sheet[1]/notebook[1]/page[3]" position="after">
+                    <page name= "Guatemala_contrato" string="Egresos">
+                        <group col="4">
+                            <separator string="EGRESOS" colspan="4"/>
+                            <field name="isr"/>
+                            <field name="prestamo"/>
+                            <field name="telefono"/>
+                            <field name="otros"/>
+                            <field name="otros2"/>
+                            <field name="otros3"/>
+                            <field name="otros4"/>
+                            <field name="otros5"/>
+                            <field name="bantrab"/>
+                            <field name="ornato"/>
+                            <field name="viaticos"/>
+                            <field name="cafeteria"/>
+                            <field name="descuento_judicial"/>
+                            <field name="anticipo_salario"/>
+                            <field name="ayuvi"/>
+                            <field name="danios_vehiculos"/>
+                            <field name="danios_terceros"/>
+                            <field name="facturacion_interna"/>
+                        </group>
+                    </page>
+                </xpath>
+    
+			</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <report
+        id="report_bank_reconcil_xlsx"
+        string="Conciliacion Bancaria Excel"
+        model="bank.reconciliation"
+        report_type="xlsx"
+        name="dev_bank_reconciliation.report_reconciliation_xls"
+        file="dev_bank_reconciliation.report_reconciliation_xls"
+    />
+
+</odoo>

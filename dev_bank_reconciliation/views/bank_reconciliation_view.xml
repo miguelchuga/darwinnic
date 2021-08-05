@@ -1,0 +1,111 @@
+<openerp>
+	<data>
+	    <record id="bank_reconciliation_form_view" model="ir.ui.view">
+	        <field name="name">bank_reconciliation_form</field>
+	        <field name="model">bank.reconciliation</field>
+	        <field name="arch" type="xml"> 
+	            <form string="Bank Reconciliation" >
+	                <header>
+                    	<button name="action_confirm" states="draft" type="object" string="Confirm"/>
+                    	<!-- <button name="action_assign" type="object" string="Asignar Documento"/> -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,close"/>
+                    </header>
+	                <sheet>
+	                    <h1><field name="name" attrs="{'readonly': [('state', '=', 'close')]}"/></h1>
+	                    <group>
+	                        <group>
+                                <field name="account_rec_id" domain="[('account_bool','=',True)]" options="{'no_create': True,'no_quick_create':True,'no_create_edit':True }"/>
+                                <field name="journal_id" domain="[('type','=','bank')]" attrs="{'readonly': [('state', '=', 'close')]}" options="{'no_create': True,'no_quick_create':True,'no_create_edit':True }"/>
+<!--							<field name="journal_op_id" domain="[('type','=','bank')]" attrs="{'readonly': [('state', '=', 'close')]}"/>-->
+                                <field name="start_date" attrs="{'readonly': [('state', '=', 'close')]}"/>
+								<field name="end_date" attrs="{'readonly': [('state', '=', 'close')]}"/>
+	                        </group>
+	                        <group>
+                                <field name="start_balance" attrs="{'readonly': [('state', '=', 'close')]}"/>
+                                <field name="end_balance" attrs="{'readonly': [('state', '=', 'close')]}"/>
+	                        </group>
+	                    </group>
+	                    <notebook>
+	                        <page string="Journal Entries">
+                                <group >                                                                                                                        
+<!--                                	<field name="journal_entry_ids" attrs="{'readonly': [('state', '=', 'close')]}" nolabel="1" domain="[('account_id','=',account_rec_id),('is_bank_reconcile','=',False),('date','>=',start_date),('date','&lt;=',end_date),('account_id.type','=','liquidity')]" context="{'state':state}"  >-->
+                                       <!-- <field name="journal_entry_ids" attrs="{'readonly': [('state', '=', 'close')]}" nolabel="1" domain="[('account_id','=',account_rec_id),('is_bank_reconcile','=',False),('move_id.state','=','posted'),('date','>=',start_date),('date','&lt;=',end_date)]" context="{'state':state}"  > -->
+									   <field name="journal_entry_ids" attrs="{'readonly': [('state', '=', 'close')]}" nolabel="1" domain="[('account_id','=',account_rec_id),('is_bank_reconcile','=',False),('move_id.state','=','posted'),('date','&lt;=',end_date)]" context="{'state':state}">
+                                        <tree string="Journal Entry" colors="green:is_bank_reconcile == True " editable="bottom">
+                                            <field name="date" readonly="1"/>
+                                            <field name="name" string="Transacción" readonly="1"/>
+                                            <field name="document_number" string="Documento" readonly="1"/>
+                                            <field name="move_name" string="Asiento" readonly="1"/>                                            
+                                            <field name="ref" readonly="1"/>
+                                            <field name="partner_id" readonly="1"/>
+                                            <field name="account_id" readonly="1"/>
+                                            <field name="amount_currency" string="Otra Moneda" readonly="1"/>
+                                            <field name="debit" readonly="1"/>
+                                            <field name="credit" readonly="1"/>
+											<field name="currency_id" readonly="1"/>
+                                            <field name="is_bank_reconcile" invisible="0"/>
+                                            <!-- <button string="Confirmar" name="action_make_confirm"  type="object"/> -->
+                                            <!-- <button string="Cancelar" attrs="{'invisible': [('is_bank_reconcile', '!=', True)]}" name="action_cancel_confirm"  type="object"/> -->
+                                        </tree>
+                                    </field>
+                                </group>
+	                        </page>
+	                    </notebook>
+	                    
+	                    <group>						
+							<label for="bank_statement"/>
+							<div>	
+                            	<field name="bank_statement" class="oe_inline"/>
+								<button name="button_dummy" states="draft" string="(update)" type="object" class="oe_link oe_inline" nolable="1"/>
+							</div>	
+							<field name="bank_account"/>
+							<field name="less_unrepresented_amount"/>	
+							<field name="deposit_not_credited_bank"/>		
+							<field name="differance"/>					
+	                    </group>
+						       
+	                </sheet>
+	        	</form>	
+	        </field>
+	    </record>
+	    
+	    <record id="bank_reconciliation_tree_view" model="ir.ui.view">
+	        <field name="name">bank_reconciliation_tree</field>
+	        <field name="model">bank.reconciliation</field>
+	        <field name="arch" type="xml"> 
+		    	<tree string="Bank Reconciliation">
+	                <field name="name"/>
+					<field name="start_date"/>
+					<field name="end_date"/>
+	                <field name="account_rec_id"/>
+	<!--					<field name="journal_op_id"/>-->
+	                <field name="start_balance" />
+	                <field name="end_balance" />
+	                <field name="state" />
+	            </tree>	
+	        </field>
+	    </record>
+	    
+	    <record id="bank_reconciliation_search_view" model="ir.ui.view">
+	        <field name="name">bank_reconciliation_search_view</field>
+	        <field name="model">bank.reconciliation</field>
+	        <field name="arch" type="xml"> 
+		        <search string="Bank Reconciliation">
+		            <field name="account_rec_id" string="Account"/>
+	            </search>	
+	        </field>
+	    </record>
+	    
+	    <record id="action_bank_reconciliation" model="ir.actions.act_window">
+	        <field name="name">Bank Reconciliation</field>
+	        <field name="type">ir.actions.act_window</field>
+	        <field name="res_model">bank.reconciliation</field>
+	        <field name="view_mode">tree,form</field>
+	    </record>
+	    
+	    <menuitem id="menu_chalan" parent="account.menu_finance_entries" name="Bank Reconciliation"
+	        sequence="2"
+	        action="action_bank_reconciliation"/> 
+	    
+	</data>
+</openerp>

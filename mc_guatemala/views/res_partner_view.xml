@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+    	<record model="ir.ui.view" id="gt_res_partner_form_view">
+      		<field name="name">gt.res_partner_form</field>
+      		<field name="model">res.partner</field>
+      		<field name="inherit_id" ref="base.view_partner_form"/>
+      		<field name="arch" type="xml">
+	        	<field name="vat" position="before">
+					<field name="x_codigo_interno"/>
+	<!--
+		 			<field name="x_nombre_comercial"/>
+					<field name="x_codigo_interno"/>
+					<field name="x_dpi"/>
+					<field name="x_pasaporte"/>
+
+				</field>
+				<field name="category_id" position="after">
+					<field name="x_contacto_directo"/>
+					<field name="x_gira"/>
+					<field name="x_calificacion"/>
+					<field name="x_codigo_vendedor"/>
+					<field name="x_fecha_nacimiento"/>
+-->
+				</field>
+      		</field>
+     	</record>
+	</data>
+</odoo>

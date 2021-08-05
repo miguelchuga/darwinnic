@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="edxfel_view_account_journal_form" model="ir.ui.view">
+            <field name="name">edxfel.account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet/group/group[1]" position="inside">
+
+                    <field name="edxfel_type"/>
+                    <field name="edxfel_establishment_code"/>
+                    <field name="edxfel_comercial_name"/>
+                    <field name="edxfel_establishment_street"/>
+                    <field name="edxfel_phone_number"/>
+
+                    <!-- YA NO SE VAN A UTILIZAR
+                    <field name="edxfel_previous_authorization"/>
+                    <field name="edxfel_previous_serial"/>
+-->
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
